@@ -6,16 +6,20 @@ import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 const navigation = [
-    { name: 'Inicio', href: '#', current: true },
-    { name: 'Productos', href: '#', current: false },
-    { name: 'Contactanos', href: '#', current: false }
+    { name: 'Inicio', href: '/' },
+    { name: 'Productos', href: '/shop' },
+    { name: 'Contactanos', href: '/contact' }
 ]
 
 function classNames(...classes: any[]) {
     return classes.filter(Boolean).join(' ')
 }
 
-const Navbar = () => {
+interface NavbarProps {
+    activeItem: string
+}
+
+const Navbar = ({ activeItem }: NavbarProps) => {
     return (
         <Disclosure as="nav" className="bg-black">
             {({ open }) => (
@@ -47,10 +51,10 @@ const Navbar = () => {
                                                 key={item.name}
                                                 href={item.href}
                                                 className={classNames(
-                                                    item.current ? 'bg-white text-black' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                    item.name === activeItem ? 'bg-white text-black' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                                     'rounded-3xl px-3 py-2 text-sm font-medium transition-color duration-200'
                                                 )}
-                                                aria-current={item.current ? 'page' : undefined}
+                                                aria-current={item.name === activeItem ? 'page' : undefined}
                                             >
                                                 {item.name}
                                             </a>
@@ -118,7 +122,7 @@ const Navbar = () => {
                                             <span className="absolute -inset-1.5" />
                                             <span className="sr-only">Open user menu</span>
                                             <div className='flex px-2 py-1 align-middle'>
-                                                <ShoppingCartIcon width={24} className='px-1'/>
+                                                <ShoppingCartIcon width={24} className='px-1' />
                                                 <p className='w-auto'>S/. 0.00</p>
                                             </div>
                                         </Menu.Button>
@@ -168,12 +172,11 @@ const Navbar = () => {
                                     as="a"
                                     href={item.href}
                                     className={classNames(
-                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        item.name === activeItem ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                         'block rounded-md px-3 py-2 text-base font-medium'
                                     )}
-                                    aria-current={item.current ? 'page' : undefined}
+                                    aria-current={item.name === activeItem ? 'page' : undefined}
                                 >
-                                    {item.name}
                                 </Disclosure.Button>
                             ))}
                         </div>

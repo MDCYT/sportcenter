@@ -2,11 +2,13 @@ import Image from "next/image"
 
 import Navbar from "@/components/NavbarComponent"
 import FeatureCard from "@/components/FeatureCard"
+import Footer from "@/components/Footer"
+import Contact from "@/components/Contact"
 
 export default function Home() {
   return (
     <div className="bg-white rounded-lg h-full w-full text-black">
-      <Navbar />
+      <Navbar activeItem="Inicio" />
       <div className="h-[calc(100vh-4rem)] grid grid-cols-2 gap-2">
         <div className="flex flex-wrap flex-col	items-center align-middle justify-center">
           <div className="mx-24">
@@ -131,59 +133,8 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="h-[90vh] bg-[url('/images/bgcontact.png')] bg-no-repeat bg-auto bg-center">
-        <div className="h-[calc(100vh-4rem)] grid grid-cols-2 gap-2 text-white">
-          <div className="flex flex-wrap flex-col	items-center align-middle justify-center">
-            <div className="mx-24 text-center flex flex-col items-center justify-center">
-              <h1 className="font-extrabold text-4xl">Contactanos</h1>
-              <p className="text-sm py-4">
-              ¿Tienes alguna pregunta? ¡No dudes en contactarnos! Estamos aquí para ayudarte a encontrar la ropa deportiva perfecta para ti. Puedes escribirnos a whatsapp o llamarnos al 999 999 999.
-              </p>
-              <br />
-              <a href={"/contact"}
-                className={'bg-[#25D366] text-white hover:bg-gray-700 hover:text-white rounded-3xl px-3 py-2 text-sm font-medium transition-color duration-200 flex flex-row text-center items-center justify-center w-1/2'
-                }
-              >
-                <Image src={'/images/whatsapp.svg'} width={20} height={20} alt="WhatsApp Logo"/>
-                <p className="px-3">Contactanos via WhatsApp</p>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="h-64 bg-black flex flex-row text-white">
-        <div className="pl-64 h-full items-center justify-center flex flex-col">
-          <Image src={"/images/logo.png"} width={200} height={200} alt="Logo Empresa"/>
-          <p className="italic pb-4 text-sm">© SportCenter.</p>
-          <div className="flex flex-row gap-3">
-            <a href="#">
-              <Image src={"/images/logo-facebook.svg"} width={20} height={20} alt="Facebook Logo"/>
-            </a>
-            <a href="#">
-              <Image src={"/images/logo-instagram.svg"} width={20} height={20} alt="Facebook Logo"/>
-            </a>
-            <a href="#">
-              <Image src={"/images/logo-tiktok.svg"} width={20} height={20} alt="Facebook Logo"/>
-            </a>
-            <a href="#">
-              <Image src={"/images/logo-whatsapp.svg"} width={20} height={20} alt="Facebook Logo"/>
-            </a>
-          </div>
-        </div>
-        <div className="h-full w-full flex flex-col items-center justify-center text-center">
-          <div className="flex flex-row justify-between w-[72%] text-lg py-4">
-            <a href="#">Ropa de hombre</a>
-            <a href="#">Ropa de mujer</a>
-            <a href="#">Ropa de niño</a>
-          </div>
-          <hr className="bg-white text-white border-white w-[80%]"/>
-          <div className="flex flex-row justify-between w-[72%] text-lg py-4">
-            <a href="#">Inicio</a>
-            <a href="#">Productos</a>
-            <a href="#">Contactanos</a>
-          </div>
-        </div>
-      </div>
+      <Contact/>
+      <Footer/>
     </div>
   )
 }
