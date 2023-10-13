@@ -1,6 +1,7 @@
-import Navbar from "@/components/NavbarComponent";
+import Navbar from "@/components/Navbar";
 
 import Image from "next/image";
+import CustomImage from "./components/Image"
 
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -30,9 +31,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
         <div className="bg-white rounded-lg h-full w-full text-black">
             <Navbar activeItem="Productos" />
             <div className="grid grid-cols-2 gap-2 py-8">
-                <div className="flex items-center justify-center">
-                    <Image src={product.image || "/images/template.png"} width={400} height={400} alt="Image" />
-                </div>
+                    <CustomImage product={product}/>
                 <div className="pr-16">
                     <div className="flex flex-row items-center">
                         <h1 className="text-2xl font-extrabold">{product.name}</h1>
@@ -94,7 +93,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
                 <br />
                 <div className="py-4 grid grid-cols-5 gap-5">
                     {products.map((product) => (
-                        <Product key={product.id} image={product.image || "/images/template.png"} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
+                        <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
                     ))}
                 </div>
             </div>

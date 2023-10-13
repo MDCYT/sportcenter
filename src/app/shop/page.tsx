@@ -1,7 +1,7 @@
 import Carousel from "@/components/Carousel";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/NavbarComponent";
+import Navbar from "@/components/Navbar";
 import Product from "@/components/Product";
 import { EmblaOptionsType } from 'embla-carousel-react'
 
@@ -26,7 +26,7 @@ const Shop = async () => {
         <div className="bg-white rounded-lg h-full w-full text-black">
             <Navbar activeItem="Productos" />
             <Carousel slides={SLIDES} options={OPTIONS} />
-            <div className="px-8 w-full">
+            {/* <div className="px-8 w-full">
                 <h3 className="py-4 font-medium text-lg">Productos mas vendidos</h3>
                 <hr className="border-[#0063C1] border-4 w-64 rounded-md" />
                 <div className="py-4 grid grid-cols-5 gap-5">
@@ -37,13 +37,13 @@ const Shop = async () => {
                     <Product name="Nike Dri-FIT Miler" price={250} url="/product/1" image="/images/template.png" />
                 </div>
             </div>
-            <br />
+            <br /> */}
             <div className="px-8 w-full">
                 <h3 className="py-4 font-medium text-lg">Todos los productos</h3>
                 <hr className="border-[#0063C1] border-4 w-64 rounded-md" />
                 <div className="py-4 grid grid-cols-5 gap-5"> 
                     {products.map((product) => (
-                        <Product key={product.id} image={product.image || "/images/template.png"} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
+                        <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
                     ))}
                 </div>
             </div>

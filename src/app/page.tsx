@@ -1,6 +1,6 @@
 import Image from "next/image"
 
-import Navbar from "@/components/NavbarComponent"
+import Navbar from "@/components/Navbar"
 import FeatureCard from "@/components/FeatureCard"
 import Footer from "@/components/Footer"
 import Contact from "@/components/Contact"

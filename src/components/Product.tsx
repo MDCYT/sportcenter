@@ -1,19 +1,25 @@
+"use client"
+
 import Image from "next/image"
 import { convertToFloatWithTwoDecimals } from "@/utils/utils"
+import useLoadImage from "@/hooks/useLoadImage"
 
 interface ProductProps {
     name: string
     price: number
     reduced_price?: number
-    image: string
+    product: any
     url: string
 }
 
-const Product = ({ name, price, reduced_price, image, url }: ProductProps) => {
+const Product = ({ name, price, reduced_price, product, url }: ProductProps) => {
+
+    const imagePath = useLoadImage(product);
+
     return (
         <div className="group">
             <div className=" rounded-xl border flex flex-col items-center text-center  group-hover:border-[#0063C1]">
-                <Image src={image} width={250} height={250} alt="Template" className="rounded-xl" />
+                <Image src={imagePath ||  "/images/template.png"} width={250} height={250} alt="Template" className="rounded-xl" />
                 <div className="py-2">
                     <p className="text-[#0063C1] font-medium">{name}</p>
                     <div className={reduced_price ? "flex flex-row gap-1" : ""}>

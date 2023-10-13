@@ -2,6 +2,7 @@ import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 
 const Dashboard = () => {
+
     return ( 
         <Sidebar>
             <div className="w-full h-full flex items-center justify-center text-black mt-8 flex-col">
@@ -25,6 +26,7 @@ const Dashboard = () => {
                 ¡Te deseamos mucho éxito en tu nuevo rol!
                 </p>
             </div>
+
         </Sidebar>
      );
 }

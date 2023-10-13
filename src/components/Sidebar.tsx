@@ -1,7 +1,7 @@
 "use client";
 
-import { usePathname } from 'next/navigation';
-import { useMemo } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useEffect, useMemo } from 'react';
 import { HiHome } from 'react-icons/hi';
 import { BiPackage, BiUser } from 'react-icons/bi';
 import { twMerge } from 'tailwind-merge';
@@ -9,6 +9,7 @@ import Image from 'next/image'
 
 import Box from './Box';
 import SidebarItem from './SidebarItem';
+import { useSessionContext, useSupabaseClient } from '@supabase/auth-helpers-react';
 
 interface SidebarProps {
     children: React.ReactNode;
@@ -17,6 +18,17 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({
     children,
 }) => {
+    const supabaseClient = useSupabaseClient();
+
+    const router = useRouter();
+    const { session } = useSessionContext();
+
+        useEffect(() => {
+        if (!session) {
+            router.replace("/");
+        }
+    }, [session, router, supabaseClient])
+
     const pathname = usePathname();
 
     const routes = useMemo(() => [
@@ -37,6 +49,16 @@ const Sidebar: React.FC<SidebarProps> = ({
             href: '/dashboard/personal'
         }
     ], [pathname])
+    
+
+    useEffect(() => {
+        fetch("/api/profile")
+            .then((response) => response.json())
+            .then((profile) => {
+                console.log(profile);
+                if(!profile || profile.role === 1) return router.replace("/")
+            });
+    }, [router]);
 
     return (
         <div className={twMerge(`
