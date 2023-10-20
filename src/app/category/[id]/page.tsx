@@ -42,7 +42,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
                     {categoryData.description}
                 </p>
                 <br />
-                <div className="py-4 grid grid-cols-5 gap-5">
+                <div className="py-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5">
                     {productsData.map((product) => (
                         <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
                     ))}
