@@ -22,26 +22,50 @@ const Shop = async () => {
 
     if(!products) products = []
 
+    let { data: productsMujeres } = await supabase.from("product").select("*").eq("category", 2)
+
+    if(!productsMujeres) productsMujeres = []
+    let { data: productsHombres } = await supabase.from("product").select("*").eq("category", 3)
+
+    if(!productsHombres) productsHombres = []
+    let { data: productsNiños } = await supabase.from("product").select("*").eq("category", 4)
+
+    if(!productsNiños) productsNiños = []
     return (
         <div className="bg-white rounded-lg h-full w-full text-black">
             <Navbar activeItem="Productos" />
             <Carousel slides={SLIDES} options={OPTIONS} />
-            {/* <div className="px-8 w-full">
-                <h3 className="py-4 font-medium text-lg">Productos mas vendidos</h3>
+            <div className="px-8 w-full">
+                <h3 className="py-4 font-medium text-lg">Productos para Mujeres</h3>
                 <hr className="border-[#0063C1] border-4 w-64 rounded-md" />
-                <div className="py-4 grid grid-cols-5 gap-5">
-                    <Product name="Nike Dri-FIT Miler" price={250} url="/product/1" image="/images/template.png" />
-                    <Product name="Nike Dri-FIT Miler" price={250} url="/product/1" image="/images/template.png" />
-                    <Product name="Nike Dri-FIT Miler" price={250} url="/product/1" image="/images/template.png" />
-                    <Product name="Nike Dri-FIT Miler" price={250} url="/product/1" image="/images/template.png" />
-                    <Product name="Nike Dri-FIT Miler" price={250} url="/product/1" image="/images/template.png" />
+                <div className="py-4 grid lg:grid-cols-5 gap-5 grid-cols-2"> 
+                    {productsMujeres.map((product) => (
+                        <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
+                    ))}
                 </div>
             </div>
-            <br /> */}
+            <div className="px-8 w-full">
+                <h3 className="py-4 font-medium text-lg">Productos para Hombres</h3>
+                <hr className="border-[#0063C1] border-4 w-64 rounded-md" />
+                <div className="py-4 grid lg:grid-cols-5 gap-5 grid-cols-2"> 
+                    {productsHombres.map((product) => (
+                        <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
+                    ))}
+                </div>
+            </div>
+            <div className="px-8 w-full">
+                <h3 className="py-4 font-medium text-lg">Productos para Niños</h3>
+                <hr className="border-[#0063C1] border-4 w-64 rounded-md" />
+                <div className="py-4 grid lg:grid-cols-5 gap-5 grid-cols-2"> 
+                    {productsNiños.map((product) => (
+                        <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
+                    ))}
+                </div>
+            </div>
             <div className="px-8 w-full">
                 <h3 className="py-4 font-medium text-lg">Todos los productos</h3>
                 <hr className="border-[#0063C1] border-4 w-64 rounded-md" />
-                <div className="py-4 grid grid-cols-5 gap-5"> 
+                <div className="py-4 grid lg:grid-cols-5 gap-5 grid-cols-2"> 
                     {products.map((product) => (
                         <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
                     ))}
@@ -49,7 +73,7 @@ const Shop = async () => {
             </div>
             <div
                 className="flex flex-col items-center justify-center bg-[url('/images/bg.png')] bg-no-repeat bg-auto bg-center bg-[#0063C1] text-white py-10 h-[75vh]">
-                <div className="w-2/6 items-center flex flex-col">
+                <div className="w-4/6 sm:w-3/6 md:w-2/6 items-center flex flex-col">
                     <h2 className="text-4xl font-bold text-center">¿Estás interesado en comprar nuestra ropa deportiva al por mayor?</h2>
                     <p className="text-center text-sm py-4">
                         Contáctanos por WhatsApp para obtener más información sobre nuestros precios y descuentos especiales para empresas.
@@ -66,7 +90,7 @@ const Shop = async () => {
             <div className="bg-white h-96 min-w-full flex items-center content-center justify-center text-center">
                 <div className="flex flex-col">
                     <h3 className="w-full text-center text-slate-600 text-2xl font-bold">Marcas que nos respaldan</h3>
-                    <div className="grid grid-cols-4 gap-4 py-8">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-8 px-4">
                         <Image src={"/images/adidas.png"} alt="Logo" width={200} height={200}/>
                         <Image src={"/images/nike.png"} alt="Logo" width={200} height={200}/>
                         <Image src={"/images/puma.png"} alt="Logo" width={200} height={200}/>

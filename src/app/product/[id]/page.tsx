@@ -30,12 +30,12 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
     return (
         <div className="bg-white rounded-lg h-full w-full text-black">
             <Navbar activeItem="Productos" />
-            <div className="grid grid-cols-2 gap-2 py-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2 py-8">
                     <CustomImage product={product}/>
-                <div className="pr-16">
+                <div className="md:pr-16 px-8 md:px-0 w-screen md:w-full flex justify-center items-center flex-col justify-items-center">
                     <div className="flex flex-row items-center">
                         <h1 className="text-2xl font-extrabold">{product.name}</h1>
-                        <div className={"px-2 py-1 ml-2 bg-[#0063C11A]" + (product.stock > 0 ? "" : "hidden")}>
+                        <div className={" text-center w-48 px-2 py-1 ml-2 bg-[#0063C11A]" + (product.stock > 0 ? "" : "hidden")}>
                             En Stock
                         </div>
                     </div>
@@ -55,7 +55,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
                     </div>
                     <p className="text-neutral-600 text-sm py-4">{product.description}</p>
                     <div className="flex flex-row justify-between">
-                        <p className="font-medium">Precio</p>
+                        <p className="font-medium">Precio: </p>
                         <div className={product.reduced_price ? "flex flex-row gap-1" : ""}>
                             <p className={(product.reduced_price ? " text-red-700 line-through" : "")}>S/ {convertToFloatWithTwoDecimals(product.price)}</p><p className={product.reduced_price ? "font-bold" : "hidden"}> {product.reduced_price ? "S/ " + product.reduced_price : ""}</p>
                         </div>
@@ -91,7 +91,7 @@ const ProductPage = async ({ params }: { params: { id: string } }) => {
                     {product.large_description}
                 </p>
                 <br />
-                <div className="py-4 grid grid-cols-5 gap-5">
+                <div className="py-4 grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-5">
                     {products.map((product) => (
                         <Product key={product.id} product={product} name={product.name} price={product.price} url={('/product/' + product.id)} reduced_price={product.reduced_price} />
                     ))}

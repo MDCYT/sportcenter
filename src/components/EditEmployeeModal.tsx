@@ -4,19 +4,19 @@ import { useSupabaseClient, useSessionContext } from "@supabase/auth-helpers-rea
 import { useRouter } from "next/navigation";
 
 import Modal from "@/components/Modal";
-import useEditProductModal from "@/hooks/useEditProductModal";
+import useEditEmployeeModal from "@/hooks/useEditEmployeeModal";
 import { ChangeEvent, useEffect, useState } from "react";
 import { PhotoIcon } from '@heroicons/react/24/solid'
 
 import { toast } from "react-hot-toast";
 import uniqid from "uniqid";
 
-const CreateProductModal = () => {
+const CreateEmployeeModal = () => {
     const supabaseClient = useSupabaseClient();
 
     const router = useRouter();
     const { session } = useSessionContext();
-    const { onClose, isOpen, id } = useEditProductModal()
+    const { onClose, isOpen, id } = useEditEmployeeModal()
     const onChange = (open: boolean) => {
         if (!open) {
             onClose();
@@ -288,4 +288,4 @@ const CreateProductModal = () => {
     );
 }
 
-export default CreateProductModal;
+export default CreateEmployeeModal;

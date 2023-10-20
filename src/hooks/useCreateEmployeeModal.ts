@@ -1,15 +1,15 @@
 import { create } from "zustand";
 
-interface CreateProductModalStore {
+interface CreateEmployeeModalStore {
     isOpen: boolean;
     onOpen: () => void;
     onClose: () => void;
 }
 
-const useCreateProductModal = create<CreateProductModalStore>((set) => ({
+const useCreateEmployeeModal = create<CreateEmployeeModalStore>((set) => ({
     isOpen: false,
     onOpen: () => set({isOpen: true}),
     onClose: () => set({isOpen: false}),
 }))
 
-export default useCreateProductModal
+export default useCreateEmployeeModal

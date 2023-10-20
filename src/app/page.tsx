@@ -26,13 +26,13 @@ export default function Home() {
             </a>
           </div>
         </div>
-        <div className="flex flex-wrap flex-col	items-center align-middle justify-center">
+        <div className=" flex-wrap flex-col	items-center align-middle justify-center  hidden sm:flex">
           <Image src={'/images/deportista.png'} alt="Deportista" width={600} height={600} className="bg-[url('/images/blob.svg')] bg-no-repeat bg-auto bg-center" />
         </div>
       </div>
-      <div className="h-48 bg-[#0063C14D] grid grid-rows-3 grid-flow-col">
+      <div className="md:h-48 h-80 bg-[#0063C14D] grid grid-rows-1 md:grid-rows-3 flex-row">
         <div className="row-span-3 flex flex-wrap flex-col	items-center align-middle justify-center">
-          <div>
+          <div className="flex items-center flex-col w-[100vw] md:w-auto">
             <h2 className="text-xl font-bold">
               Caracteristicas
             </h2>
@@ -93,16 +93,16 @@ export default function Home() {
         </div>
       </div>
       <div className="min-h-[90vh]">
-        <div className="p-28">
+        <div className="py-28 px-2 sm:px-14 md:px-28">
           <h2 className="font-semibold text-2xl">Nuestros Productos:</h2>
           <p className="text-neutral-500 pb-4">Tenemos los mejores productos a los mejores precios para:</p>
           <div className="grid grid-cols-3 gap-3">
             <div className="w-full h-80 bg-[url('/images/hombre.png')] bg-no-repeat bg-auto bg-center rounded-2xl group">
               <div className="bg-[#00000088] h-full w-full rounded-2xl text-white hidden group-hover:flex flex-col p-8 transition-opacity duration-100 opacity-0 group-hover:opacity-100">
-                <p className="p-8 text-center">
+                <p className="py-2 px-0 text-xs md:px-8 md:text-base md:py-8 text-center">
                   Ropa deportiva cómoda, funcional y de moda para hombres que buscan rendir al máximo.
                 </p>
-                <a className="text-center w-full h-8 py-8 font-semibold" href="/shop/category/boy">
+                <a className="text-center w-full h-8 py-8 font-semibold" href="/category/3">
                   Ver Productos
                 </a>
               </div>
@@ -110,10 +110,10 @@ export default function Home() {
             </div>
             <div className="w-full h-80 bg-[url('/images/niño.png')] bg-no-repeat bg-auto bg-center rounded-2xl group">
               <div className="bg-[#00000088] h-full w-full rounded-2xl text-white hidden group-hover:flex flex-col p-8 transition-opacity duration-100 opacity-0 group-hover:opacity-100">
-                <p className="p-8 text-center">
+                <p className="py-2 px-0 text-xs md:px-8 md:text-base md:py-8 text-center">
                   Ropa deportiva cómoda, funcional y de moda para niños que buscan rendir al máximo.
                 </p>
-                <a className="text-center w-full h-8 py-8 font-semibold" href="/shop/category/kid">
+                <a className="text-center w-full h-8 py-8 font-semibold" href="/category/4">
                   Ver Productos
                 </a>
               </div>
@@ -121,10 +121,10 @@ export default function Home() {
             </div>
             <div className="w-full h-80 bg-[url('/images/mujer2.png')] bg-no-repeat bg-auto bg-center rounded-2xl group">
               <div className="bg-[#00000088] h-full w-full rounded-2xl text-white hidden group-hover:flex flex-col p-8 transition-opacity duration-100 opacity-0 group-hover:opacity-100">
-                <p className="p-8 text-center">
+                <p className="py-2 px-0 text-xs md:px-8 md:text-base md:py-8 text-center">
                   Ropa deportiva cómoda, funcional y de moda para mujeres que buscan rendir al máximo.
                 </p>
-                <a className="text-center w-full h-8 py-8 font-semibold" href="/shop/category/girl">
+                <a className="text-center w-full h-8 py-8 font-semibold" href="/category/2">
                   Ver Productos
                 </a>
               </div>

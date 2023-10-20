@@ -75,7 +75,7 @@ const Navbar = ({ activeItem }: NavbarProps) => {
                             </div>
                             <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                                 <a href={"/"}>
-                                    <div className="flex flex-shrink-0 items-center">
+                                    <div className="flex-shrink-0 items-center hidden sm:flex">
                                         <Image className='h-8 w-auto fill-white' src={"/images/logo.png"} alt="Sport Center Logo" width={100} height={100} />
                                     </div>
                                 </a>
@@ -155,7 +155,7 @@ const Navbar = ({ activeItem }: NavbarProps) => {
                                 ) : (
                                     <div>
                                         <Button className="bg-white text-black hover:bg-gray-700 hover:text-white rounded-3xl px-3 py-2 text-sm font-medium transition-color duration-200" onClick={authModal.onOpen}>
-                                            Sign Up
+                                            Registrate
                                         </Button>
                                     </div>
                                 )}
@@ -221,6 +221,7 @@ const Navbar = ({ activeItem }: NavbarProps) => {
                                     )}
                                     aria-current={item.name === activeItem ? 'page' : undefined}
                                 >
+                                                                                    {item.name}
                                 </Disclosure.Button>
                             ))}
                         </div>

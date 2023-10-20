@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-interface EditProductModalStore {
+interface EditEmployeeModalStore {
     isOpen: boolean;
     id: number;
     onOpen: () => void;
@@ -8,7 +8,7 @@ interface EditProductModalStore {
     changeID: (id: number) => void;
 }
 
-const useEditProductModal = create<EditProductModalStore>((set) => ({
+const useEditEmployeeModal = create<EditEmployeeModalStore>((set) => ({
     isOpen: false,
     id: 1,
     onOpen: () => set({isOpen: true}),
@@ -16,4 +16,4 @@ const useEditProductModal = create<EditProductModalStore>((set) => ({
     changeID: (id: number) => set({id: id}),
 }))
 
-export default useEditProductModal
+export default useEditEmployeeModal

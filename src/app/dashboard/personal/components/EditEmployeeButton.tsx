@@ -1,22 +1,22 @@
 "use client";
 
-import useEditProductModal from "@/hooks/useEditProductModal";
+import useEditEmployeeModal from "@/hooks/useEditEmployeeModal";
 
 import Button from "@/components/Button";
 
-interface interfaceEditProductButton {
+interface interfaceEmployeeButton {
     id: number;
 }
 
-const EditProductButton: React.FC<interfaceEditProductButton> = ({id}) => {
-    const EditProductModal = useEditProductModal()
+const EditEmployeeButton: React.FC<interfaceEmployeeButton> = ({id}) => {
+    const EditEmployeeModal = useEditEmployeeModal()
 
     return ( 
         <Button onClick={(e) => {
-            EditProductModal.changeID(id);
-            EditProductModal.onOpen()
-        }} className="Button violet">Editar Producto</Button>
+            EditEmployeeModal.changeID(id);
+            EditEmployeeModal.onOpen()
+        }} className="Button violet">Editar Empleado</Button>
      );
 }
  
-export default EditProductButton;
+export default EditEmployeeButton;

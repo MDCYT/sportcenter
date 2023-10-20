@@ -22,7 +22,7 @@ const Product = ({ name, price, reduced_price, product, url }: ProductProps) => 
                 <Image src={imagePath ||  "/images/template.png"} width={250} height={250} alt="Template" className="rounded-xl" />
                 <div className="py-2">
                     <p className="text-[#0063C1] font-medium">{name}</p>
-                    <div className={reduced_price ? "flex flex-row gap-1" : ""}>
+                    <div className={"justify-center " +(reduced_price ? "flex flex-row gap-1" : "")}>
                         <p className={(reduced_price ? " text-red-700 line-through" : "")}>S/ {convertToFloatWithTwoDecimals(price)}</p><p className={reduced_price ? "font-bold" : "hidden"}> {reduced_price ? "S/ " + reduced_price : ""}</p>
                     </div>
                 </div>

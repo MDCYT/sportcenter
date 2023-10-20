@@ -28,11 +28,11 @@ const Dashboard = async () => {
                     <table className="min-w-full bg-white">
                         <thead className="bg-gray-800 text-white">
                             <tr>
-                                <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Codigo</th>
-                                <th className="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Nombres</th>
-                                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">A. Paterno</th>
-                                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">A. Materno</th>
-                                <th className="text-left py-3 px-4 uppercase font-semibold text-sm">Acciones</th>
+                                <th className="w-3/12 text-left py-3 px-4 uppercase font-semibold text-sm">Codigo</th>
+                                <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm">Nombres</th>
+                                <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm">A. Paterno</th>
+                                <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm">A. Materno</th>
+                                <th className="w-3/12 text-left py-3 px-4 uppercase font-semibold text-sm">Acciones</th>
                             </tr>
                         </thead>
                         <tbody className="text-gray-700">

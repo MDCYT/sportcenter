@@ -16,7 +16,7 @@ const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 import { toast } from "react-hot-toast";
 import { useRouter } from "next/navigation";
 
-import EditProductButton from "./EditEmployeeButton";
+import EditEmployeeButton from "./EditEmployeeButton";
 
 const Employee: React.FC<EmployeeProps> = ({ employee }) => {
 
@@ -28,12 +28,13 @@ const Employee: React.FC<EmployeeProps> = ({ employee }) => {
 
     async function deleteEmployee() {
         setLoading(true)
-        //Delete product 
+        //Delete Employee 
         const { error } = await supabaseClient
             .from("profiles")
-            .delete()
+            .update({
+                role: 1
+            })
             .eq("id", employee.id)
-            .single();
 
         if (error) {
             console.log(error)
@@ -58,10 +59,10 @@ const Employee: React.FC<EmployeeProps> = ({ employee }) => {
             <td className="py-3 px-4">{employee.last_name_1}</td>
             <td className="py-3 px-4">{employee.last_name_2}</td>
             <td className="py-3 px-4 flex flex-row justify-center items-center">
-                <EditProductButton id={employee.id}/>
+                <EditEmployeeButton id={employee.id}/>
                 <AlertDialog.Root open={open} onOpenChange={setOpen}>
                     <AlertDialog.Trigger asChild>
-                        <button className="Button red">Borrar Producto</button>
+                        <button className="Button red">Borrar Empleado</button>
                     </AlertDialog.Trigger>
                     <AlertDialog.Portal>
                         <AlertDialog.Overlay className="AlertDialogOverlay" />

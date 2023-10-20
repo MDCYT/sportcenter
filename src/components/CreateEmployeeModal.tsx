@@ -4,7 +4,7 @@ import { useSupabaseClient, useSessionContext, Session } from "@supabase/auth-he
 import { useRouter } from "next/navigation";
 
 import Modal from "@/components/Modal";
-import useCreateProductModal from "@/hooks/useCreateProductModal";
+import useCreateEmployeeModal from "@/hooks/useCreateEmployeeModal";
 import { ChangeEvent, useEffect, useState } from "react";
 import { PhotoIcon } from '@heroicons/react/24/solid'
 
@@ -12,12 +12,12 @@ import { toast } from "react-hot-toast";
 import uniqid from "uniqid";
 import { supabase } from "@supabase/auth-ui-shared";
 
-const CreateProductModal = () => {
+const CreateEmployeeModal = () => {
     const supabaseClient = useSupabaseClient();
 
     const router = useRouter();
     const { session } = useSessionContext();
-    const { onClose, isOpen } = useCreateProductModal()
+    const { onClose, isOpen } = useCreateEmployeeModal()
 
     const onChange = (open: boolean) => {
         if (!open) {
@@ -28,7 +28,7 @@ const CreateProductModal = () => {
     const [employeeName, setEmployeeName] = useState('');
     const [employeeLastName, setEmployeeLastName] = useState('');
     const [employeeLastName2, setEmployeeLastName2] = useState('');
-    const [employeeDocumentType, setEmployeeDocumentType] = useState('');
+    const [employeeDocumentType, setEmployeeDocumentType] = useState('DNI');
     const [employeeDocumentID, setEmployeeDocumentID] = useState('');
     const [employeeEmail, setEmployeeEmail] = useState('');
     const [employeePassword, setEmployeePassword] = useState('');
@@ -102,7 +102,7 @@ const CreateProductModal = () => {
         } = await supabaseClient
             .storage
             .from('avatars')
-            .upload(`image-${uniqueID}`, selectedFile, {
+            .upload(`image-${uniqueID}-${selectedFile.name}`, selectedFile, {
                 cacheControl: '3600',
                 upsert: false
             })
@@ -138,10 +138,8 @@ const CreateProductModal = () => {
 
         console.log(userData.user)
 
-        await supabaseClient.auth.setSession({
-            access_token: currentSession?.data.session?.access_token || "",
-            refresh_token: currentSession?.data.session?.refresh_token || "",
-        })
+        console.log(currentSession)
+
 
         // Edit the profile
         const {
@@ -159,6 +157,13 @@ const CreateProductModal = () => {
         }).eq("id", userData.user?.id)
 
         console.log(profileData)
+        await supabaseClient.auth.signOut()
+
+        await supabaseClient.auth.setSession({
+            access_token: currentSession?.data.session?.access_token!,
+            refresh_token: currentSession?.data.session?.refresh_token!,
+        })
+
         if(profileError) {
             setIsLoading(false)
             return toast.error("Error al crear al empleado, contacte con el administrador")
@@ -251,6 +256,7 @@ const CreateProductModal = () => {
                                         value={employeeDocumentType}
                                         onChange={(e) => setEmployeeDocumentType(e.target.value)}
                                     >
+                                        <option value="DNI" disabled>Seleccione uno de la lista</option>
                                         <option value="DNI">Documento Nacional de Identidad / DNI</option>
                                         <option value="PAS">Pasaporte</option>
                                     </select>
@@ -355,4 +361,4 @@ const CreateProductModal = () => {
     );
 }
 
-export default CreateProductModal;
+export default CreateEmployeeModal;

@@ -21,13 +21,19 @@ const Sidebar: React.FC<SidebarProps> = ({
     const supabaseClient = useSupabaseClient();
 
     const router = useRouter();
-    const { session } = useSessionContext();
 
-        useEffect(() => {
-        if (!session) {
-            router.replace("/");
-        }
-    }, [session, router, supabaseClient])
+
+    useEffect(() => {
+
+
+        supabaseClient.auth.getSession().then((data) => {
+            const { session } = data.data
+            if (!session) {
+                console.log("No hay sesion")
+                router.replace("/");
+            }
+        });
+    }, [router, supabaseClient])
 
     const pathname = usePathname();
 
@@ -49,14 +55,14 @@ const Sidebar: React.FC<SidebarProps> = ({
             href: '/dashboard/personal'
         }
     ], [pathname])
-    
+
 
     useEffect(() => {
         fetch("/api/profile")
             .then((response) => response.json())
             .then((profile) => {
                 console.log(profile);
-                if(!profile || profile.role === 1) return router.replace("/")
+                if (!profile || profile.role === 1) return router.replace("/")
             });
     }, [router]);
 
@@ -68,7 +74,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         `
         )}>
             <div className='hidden md:flex flex-col gap-y-2 bg-black h-full w-[300px] p-2'>
-            <Image className='h-8 w-auto fill-white' src={"/images/logo.png"} alt="Sport Center Logo" width={100} height={200} />
+                <Image className='h-8 w-auto fill-white' src={"/images/logo.png"} alt="Sport Center Logo" width={100} height={200} />
                 <Box>
                     <div className='flex flex-col gap-y-5 px-5 py-4'>
                         {routes.map((item) => (

@@ -1,15 +1,15 @@
 "use client";
 
-import useCreateProductModal from "@/hooks/useCreateProductModal";
+import UseCreateEmployeeModal from "@/hooks/useCreateEmployeeModal";
 
 import Button from "@/components/Button";
 
-const CreateProductButton = () => {
-    const createProductModal = useCreateProductModal()
+const createEmployeeModal = () => {
+    const createEmployeeModal = UseCreateEmployeeModal()
 
     return ( 
-        <Button onClick={createProductModal.onOpen} className="p-4 rounded-2xl bg-[#343434] hover:bg-black text-white transition duration-200 my-8 w-64 text-center">Añadir producto</Button>
+        <Button onClick={createEmployeeModal.onOpen} className="p-4 rounded-2xl bg-[#343434] hover:bg-black text-white transition duration-200 my-8 w-64 text-center">Añadir empleado</Button>
      );
 }
  
-export default CreateProductButton;
+export default createEmployeeModal;
